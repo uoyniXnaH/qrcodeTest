@@ -1,0 +1,23 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #008888;
+}
+
+.m-1 {
+    margin: 1rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.d-block {
+    display: block;
+}
+
+.d-none {
+    display: none;
+}

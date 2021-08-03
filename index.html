@@ -2,10 +2,35 @@
 <html>
     <head>
         <meta name="viewport" cotent="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/site.css">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="js/html5-qrcode.min.js"></script>
     </head>
     <body>
-        Sample
+        <div class="m-1 text-center">
+            QR Code scan sample
+        </div>
+        <button onclick="getCam()">Get Camera</button>
+        <button onclick="scan()">Scan</button>
+        <button onclick="stop()">Stop</button>
+        <div id="reader" class="d-none"></div>
+        <div id="result"></div>
+        <div id="log"></div>
     </body>
+    <script>
+        var devices;
+        var camId;
+        const html5Qrcode = new Html5Qrcode("reader");
+
+        function getCam() {
+            Html5Qrcode.getCameras().then(devices => {
+                if (devices && devices.length) {
+                    $("#log").text("Success. Got: " + JSON.stringify(devices));
+                    camId = devices[0];
+                }
+            }).catch(err => {
+                $("#log").text("Failed.");
+            })
+        }
+    </script>
 </html>
