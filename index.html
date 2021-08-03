@@ -33,7 +33,11 @@
             Html5Qrcode.getCameras().then(devices => {
                 if (devices && devices.length) {
                     $("#log").text("Success. Got: " + JSON.stringify(devices));
-                    camId = devices[0].id;
+                    if (devices[1]) {
+                        camId = devices[1].id;
+                    } else {
+                        camId = devices[0].id;
+                    }
                 }
             }).catch(err => {
                 $("#log").text("Failed.");
@@ -55,14 +59,14 @@
             .catch((err) => {
                 console.log(err);
             });
-            // $("#reader").removeClass("d-none");
+            $("#reader").removeClass("d-none");
         }
 
         function stop() {
             html5Qrcode.stop().then((ignore) => {
                 console.log("stopped");
             }).catch((err) => {});
-            // $("#reader").addClass("d-none");
+            $("#reader").addClass("d-none");
         }
     </script>
 </html>
