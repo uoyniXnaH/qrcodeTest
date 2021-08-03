@@ -33,7 +33,7 @@
             Html5Qrcode.getCameras().then(devices => {
                 if (devices && devices.length) {
                     $("#log").text("Success. Got: " + JSON.stringify(devices));
-                    camId = devices[0];
+                    camId = devices[0].id;
                 }
             }).catch(err => {
                 $("#log").text("Failed.");
