@@ -12,7 +12,7 @@
                 QR Code scan sample
             </div>
             <button onclick="getCam()">Get Camera</button>
-            <button onclick="scan()">Scan</button>
+            <button onclick="startScan()">Scan</button>
             <button onclick="stop()">Stop</button>
             <div id="camSel" class="d-none"></div>
             <div id="reader" class=""></div>
@@ -40,7 +40,7 @@
             })
         }
 
-        function scan() {
+        function startScan() {
             html5Qrcode.start(
                 camId,
                 {
@@ -48,10 +48,13 @@
                     qrbox: 250
                 },
                 (decodedText, decodedResult) => {
+                    console.log("Success");
                     $("#result").text(decodedText);
                 },
-                (errorMessage) => {}
-            ).catch((err) => {});
+                (errorMessage) => {})
+            .catch((err) => {
+                console.log("Error");
+            });
             // $("#reader").removeClass("d-none");
         }
 
