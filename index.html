@@ -15,7 +15,7 @@
             <button onclick="scan()">Scan</button>
             <button onclick="stop()">Stop</button>
             <div id="camSel" class="d-none"></div>
-            <div id="reader" class="d-none"></div>
+            <div id="reader" class=""></div>
             <div id="result"></div>
             <div id="log"></div>
         </div>
@@ -52,14 +52,14 @@
                 },
                 (errorMessage) => {}
             ).catch((err) => {});
-            $("#reader").removeClass("d-none");
+            // $("#reader").removeClass("d-none");
         }
 
         function stop() {
             html5Qrcode.stop().then((ignore) => {
                 console.log("stopped");
             }).catch((err) => {});
-            $("#reader").addClass("d-none");
+            // $("#reader").addClass("d-none");
         }
     </script>
 </html>
