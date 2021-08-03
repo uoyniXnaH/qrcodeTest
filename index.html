@@ -7,20 +7,27 @@
         <script src="js/html5-qrcode.min.js"></script>
     </head>
     <body>
-        <div class="m-1 text-center">
-            QR Code scan sample
+        <div class="contents p-1">
+            <div class="m-1 text-center">
+                QR Code scan sample
+            </div>
+            <button onclick="getCam()">Get Camera</button>
+            <button onclick="scan()">Scan</button>
+            <button onclick="stop()">Stop</button>
+            <div id="camSel" class="d-none"></div>
+            <div id="reader" class="d-none"></div>
+            <div id="result"></div>
+            <div id="log"></div>
         </div>
-        <button onclick="getCam()">Get Camera</button>
-        <button onclick="scan()">Scan</button>
-        <button onclick="stop()">Stop</button>
-        <div id="reader" class="d-none"></div>
-        <div id="result"></div>
-        <div id="log"></div>
     </body>
     <script>
         var devices;
         var camId;
         const html5Qrcode = new Html5Qrcode("reader");
+
+        function setCamSel(devices) {
+
+        }
 
         function getCam() {
             Html5Qrcode.getCameras().then(devices => {
@@ -31,6 +38,28 @@
             }).catch(err => {
                 $("#log").text("Failed.");
             })
+        }
+
+        function scan() {
+            html5Qrcode.start(
+                camId,
+                {
+                    fps: 2,
+                    qrbox: 250
+                },
+                (decodedText, decodedResult) => {
+                    $("#result").text(decodedText);
+                },
+                (errorMessage) => {}
+            ).catch((err) => {});
+            $("#reader").removeClass("d-none");
+        }
+
+        function stop() {
+            html5Qrcode.stop().then((ignore) => {
+                console.log("stopped");
+            }).catch((err) => {});
+            $("#reader").addClass("d-none");
         }
     </script>
 </html>
