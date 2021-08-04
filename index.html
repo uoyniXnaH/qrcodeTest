@@ -7,6 +7,10 @@
         <script src="js/html5-qrcode.min.js"></script>
     </head>
     <body>
+        <div class="camArea d-none">
+            <div class="cross">X</div>
+            <div id="reader"></div>
+        </div>
         <div class="contents p-1">
             <div class="m-1 text-center">
                 QR Code scan sample
@@ -15,8 +19,6 @@
             <button onclick="startScan()">Scan</button>
             <button onclick="stop()">Stop</button>
             <div id="camSel" class="d-none"></div>
-            <div id="reader" class="">
-                <span id="cross">X</span>
             </div>
             <div id="result"></div>
             <div id="log"></div>
@@ -61,14 +63,14 @@
             .catch((err) => {
                 console.log(err);
             });
-            $("#reader").removeClass("d-none");
+            $(".camArea").removeClass("d-none");
         }
 
         function stop() {
             html5Qrcode.stop().then((ignore) => {
                 console.log("stopped");
             }).catch((err) => {});
-            $("#reader").addClass("d-none");
+            $(".camArea").addClass("d-none");
         }
     </script>
 </html>

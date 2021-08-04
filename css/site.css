@@ -30,12 +30,21 @@ div.contents {
     display: none;
 }
 
-#reader {
+/* #reader {
     width: 100%;
+} */
+
+.camArea{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-#cross {
+.cross {
     position: fixed;
     z-index: 9999;
-    float: right;
+    top: 15px;
+    right: 15px;
 }
