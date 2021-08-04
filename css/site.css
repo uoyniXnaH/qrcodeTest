@@ -7,7 +7,7 @@ body {
 }
 
 div.contents {
-    width: 95%;
+    max-width: 95%;
 }
 
 .m-1 {
@@ -28,4 +28,8 @@ div.contents {
 
 .d-none {
     display: none;
+}
+
+#reader {
+    width: 100%;
 }
