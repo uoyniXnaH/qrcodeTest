@@ -33,3 +33,9 @@ div.contents {
 #reader {
     width: 100%;
 }
+
+#cross {
+    position: fixed;
+    z-index: 9999;
+    float: right;
+}
