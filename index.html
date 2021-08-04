@@ -8,7 +8,7 @@
     </head>
     <body>
         <div class="camArea d-none">
-            <div class="cross">X</div>
+            <div class="cross" onclick="stop()">X</div>
             <div id="reader"></div>
         </div>
         <div class="contents p-1">
@@ -64,6 +64,7 @@
                 console.log(err);
             });
             $(".camArea").removeClass("d-none");
+            $(".contents").addClass("d-none");
         }
 
         function stop() {
@@ -71,6 +72,7 @@
                 console.log("stopped");
             }).catch((err) => {});
             $(".camArea").addClass("d-none");
+            $(".contents").removeClass("d-none");
         }
     </script>
 </html>
