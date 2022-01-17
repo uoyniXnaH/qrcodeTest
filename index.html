@@ -19,8 +19,9 @@
             <button onclick="startScan()">Scan</button>
             <button onclick="stop()">Stop</button>
             <div id="camSel" class="d-none"></div>
-            <div id="result"></div>
             <div id="log"></div>
+            <div>Scan result:</div>
+            <div id="result"></div>
         </div>
     </body>
     <script>
@@ -56,6 +57,7 @@
                 },
                 (decodedText, decodedResult) => {
                     console.log("Success");
+                    alert(decodedText);
                     $("#result").text(decodedText);
                 },
                 (errorMessage) => {})
