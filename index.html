@@ -7,6 +7,9 @@
         <script src="js/html5-qrcode.min.js"></script>
     </head>
     <body>
+        <div class="header">
+            This is HEADER
+        </div>
         <div class="camArea d-none">
             <div class="cross" onclick="stop()">X</div>
             <div id="reader"></div>
@@ -22,6 +25,14 @@
             <div id="log"></div>
             <div>Scan result:</div>
             <div id="result"></div>
+        </div>
+        <div class="bottom abs-bottom">
+            <button class="large" onclick="changePos()">
+                Button 1
+            </button>
+            <button class="large">
+                Button 2
+            </button>
         </div>
     </body>
     <script>
@@ -74,6 +85,16 @@
             }).catch((err) => {});
             $(".camArea").addClass("d-none");
             $(".contents").removeClass("d-none");
+        }
+
+        function changePos() {
+            $(".bottom").toggleClass("abs-top");
+            $(".bottom").toggleClass("abs-bottm");
+            if ($(".bottom").hasClass("abs-top")) {
+                $(".header").text("Buttons positioned by TOP");
+            } else {
+                $(".header").text("Buttons positioned by BOTTOM");
+            }
         }
     </script>
 </html>
